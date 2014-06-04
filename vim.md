@@ -42,18 +42,17 @@ make: *** [first] 错误 2
 
 将vimgdb源码目录中的vimgdb_runtime文件夹复制到~/.vim/bundle目录下，执行`cp vimgdb_runtime/ ~/.vim/bundle/ -r`。
 
-# 代码缩进Indent Guides
+# 代码缩进显示插件vim-indent-guides
 
-快捷键 i 开/关缩进可视化
+快捷键<leader> + i 开/关缩进可视化
 
 # 代码折叠
 
-采用系统自带。
-操作：za，打开或关闭当前折叠；zM，关闭所有折叠；zR，打开所有折叠
+vim自带功能，基于语法和缩进进行折叠。操作：za，打开或关闭当前折叠；zM，关闭所有折叠；zR，打开所有折叠。
 
 # 头文件和实现文件之间自动切换a.vim
 
-常用快捷键_:A_
+常用快捷键`:A`
 
 :A switches to the header file corresponding to the current file being edited (or vise versa)
 :AS splits and switches
@@ -86,7 +85,7 @@ _<leader>man_可直接显示，不需要输入命令
 fl：打开与关闭窗口
 回车，打开选中文件；
 r，刷新工程目录文件列表；
-I（大写），显示/隐藏隐藏文件；
+I（大写），显示/隐藏文件；
 m，出现创建/删除/剪切/拷贝操作列表。
 
 # 安装YouCompleteMe
@@ -94,12 +93,11 @@ m，出现创建/删除/剪切/拷贝操作列表。
 进入到~/.vim/bundle目录中，执行：
 
 ```
-git clone https://github.com/Valloric/YouCompleteMe.git 
 cd YouCompleteMe
 git submodule update --init --recursive
 ```
 
-如果没有安装cmake，先安装cmake工具，下载地址：http://www.cmake.org/cmake/resources/software.html
+如果没有安装cmake，先安装cmake工具，下载地址：http://www.cmake.org/cmake/resources/software.html。YCM需要CMake2.8版本以上，CentOS通过yum命令安装的CMake命令版本过低，需要通过源码安装。
 
 ```
 cd ~/software/ 
@@ -118,5 +116,5 @@ make ycm_support_libs
 # 参考文章
 
 (Vim配置及说明——IDE编程环境)[http://www.cnblogs.com/zhongcq/p/3642794.html]
-(Vim自动补全神器：YouCompleteMe)[http://blog.jobbole.com/58978/]
+(Vim自动补全神器：YouCompleteMe)[http://marchtea.com/?p=161]
 (Git时代的VIM不完全使用教程)[http://beiyuu.com/git-vim-tutorial/]

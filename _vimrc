@@ -12,7 +12,14 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " ----------------安装插件------------------
-Plugin 'Lokaltog/vim-powerline'
+Plugin 'Lokaltog/vim-powerline'             " 控制台插件
+Plugin 'Mizuchi/STL-Syntax'                 " STL语法高亮插件
+Plugin 'nathanaelkane/vim-indent-guides'    " 代码缩进高亮插件
+Plugin 'a.vim'                              " 在.h文件和.cpp文件进行切换插件
+Plugin 'scrooloose/nerdcommenter'           " 快速注释插件
+Plugin 'Valloric/YouCompleteMe'             " 代码补全插件
+Plugin 'scrooloose/nerdtree'                " 工程文件浏览
+Plugin 'fholgado/minibufexpl.vim'           " 多文档编辑
 
 " ----------------Vundle end------------------
 " All of your Plugins must be added before the following line
@@ -44,6 +51,7 @@ set softtabstop=4
 " 解决粘帖代码时代码换行问题
 set paste
 
+" [代码折叠相关]
 " 基于缩进或语法进行代码折叠
 set foldmethod=indent
 " set foldmethod=syntax
@@ -100,6 +108,7 @@ set nowrap
 syntax enable
 " 允许用指定语法高亮配色方案替换默认方案
 syntax on
+
 " ----------------插件配置------------------
 " 配色方案
 " set background=dark
@@ -118,3 +127,35 @@ set nocompatible   " Disable vi-compatibility
 " set laststatus=2   " Always show the statusline
 set encoding=utf-8 " Necessary to show Unicode glyphs
 set t_Co=256 " Explicitly tell Vim that the terminal supports 256 colors
+
+" +++++代码缩进显示vim-indent-guides++++
+" 随 vim 自启动
+let g:indent_guides_enable_on_vim_startup=0
+" 从第二层开始可视化显示缩进
+let g:indent_guides_start_level=2
+" 色块宽度
+let g:indent_guides_guide_size=1
+" 快捷键 i 开/关缩进可视化
+:nmap <silent> <Leader>i <Plug>IndentGuidesToggle
+let g:indent_guides_auto_colors = 1
+
+" +++++查看工程文件插件NERDTree++++
+" 使用 NERDTree 插件查看工程文件。设置快捷键，速记：file list
+nmap <Leader>fl :NERDTreeToggle<CR>
+" 设置NERDTree子窗口宽度
+let NERDTreeWinSize=32
+" 设置NERDTree子窗口位置
+let NERDTreeWinPos="left"
+" 显示隐藏文件
+let NERDTreeShowHidden=1
+" NERDTree 子窗口中不显示冗余帮助信息
+let NERDTreeMinimalUI=1
+" 删除文件时自动删除文件对应 buffer
+let NERDTreeAutoDeleteBuffer=1
+
+" +++++多文档编辑插件MiniBufExplorer++++
+" 显示/隐藏 MiniBufExplorer 窗口
+map <Leader>bl :MBEToggle<cr>
+" buffer 切换快捷键
+nmap <Tab> :MBEbn<cr>
+nmap <S-Tab> :MBEbp<cr>

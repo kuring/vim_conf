@@ -20,6 +20,7 @@ Plugin 'scrooloose/nerdcommenter'           " 快速注释插件
 Plugin 'Valloric/YouCompleteMe'             " 代码补全插件
 Plugin 'scrooloose/nerdtree'                " 工程文件浏览
 Plugin 'fholgado/minibufexpl.vim'           " 多文档编辑
+Plugin 'plasticboy/vim-markdown'            " markdown插件
 
 " ----------------Vundle end------------------
 " All of your Plugins must be added before the following line
@@ -70,8 +71,6 @@ filetype plugin on
 set incsearch
 " 搜索时大小写不敏感
 set ignorecase
-" 关闭兼容模式
-set nocompatible
 " vim 自身命令行模式智能补全
 set wildmenu
 
@@ -108,22 +107,22 @@ set nowrap
 syntax enable
 " 允许用指定语法高亮配色方案替换默认方案
 syntax on
-
+" 修正插入模式下backspace键不能用问题
+set backspace=2 " make backspace work like most other apps
 " ----------------插件配置------------------
 " 配色方案
-" set background=dark
-set background=light
+set background=dark
+" set background=light
 " colorscheme solarized
-" colorscheme molokai
+colorscheme molokai
 let g:molokai_original = 1
 let g:rehash256 = 1
-colorscheme phd
+" colorscheme phd
 
 " +++++状态栏++++
 " 设置状态栏主题风格
 " let g:Powerline_theme = 'solarized256'
 let g:Powerline_colorscheme = 'solarized256'
-set nocompatible   " Disable vi-compatibility
 " set laststatus=2   " Always show the statusline
 set encoding=utf-8 " Necessary to show Unicode glyphs
 set t_Co=256 " Explicitly tell Vim that the terminal supports 256 colors
@@ -159,3 +158,9 @@ map <Leader>bl :MBEToggle<cr>
 " buffer 切换快捷键
 nmap <Tab> :MBEbn<cr>
 nmap <S-Tab> :MBEbp<cr>
+
+" +++++markdown插件++++
+" markdown默认不折叠
+let g:vim_markdown_folding_disabled=1
+" markdown折叠层次
+let g:vim_markdown_initial_foldlevel=1

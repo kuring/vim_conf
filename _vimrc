@@ -21,6 +21,9 @@ Plugin 'Valloric/YouCompleteMe'             " 代码补全插件
 Plugin 'scrooloose/nerdtree'                " 工程文件浏览
 Plugin 'fholgado/minibufexpl.vim'           " 多文档编辑
 Plugin 'plasticboy/vim-markdown'            " markdown插件
+Plugin 'shemerey/vim-indexer'
+Plugin 'DfrankUtil'
+Plugin 'vimprj'
 
 " ----------------Vundle end------------------
 " All of your Plugins must be added before the following line
@@ -164,3 +167,10 @@ nmap <S-Tab> :MBEbp<cr>
 let g:vim_markdown_folding_disabled=1
 " markdown折叠层次
 let g:vim_markdown_initial_foldlevel=1
+
+" +++++indexer插件++++
+" 设置插件 indexer 调用 ctags 的参数
+" 默认 --c++-kinds=+p+l，重新设置为 --c++-kinds=+p+l+x+c+d+e+f+g+m+n+s+t+u+v
+" 默认 --fields=+iaS 不满足 YCM 要求，需改为 --fields=+iaSl
+let g:indexer_ctagsCommandLineOptions="--c++-kinds=+p+l+x+c+d+e+f+g+m+n+s+t+u+v --fields=+iaSl --extra=+q"
+

@@ -21,9 +21,10 @@ Plugin 'Valloric/YouCompleteMe'             " 代码补全插件
 Plugin 'scrooloose/nerdtree'                " 工程文件浏览
 Plugin 'fholgado/minibufexpl.vim'           " 多文档编辑
 Plugin 'plasticboy/vim-markdown'            " markdown插件
-Plugin 'shemerey/vim-indexer'
-Plugin 'DfrankUtil'
-Plugin 'vimprj'
+Plugin 'indexer.tar.gz'                     " tags文件自动更新插件
+Plugin 'DfrankUtil'                         " indexer.tar.gz插件依赖插件
+Plugin 'Vimprj'                             " indexer.tar.gz插件依赖插件
+Plugin 'gtags.vim'                          " global插件
 
 " ----------------Vundle end------------------
 " All of your Plugins must be added before the following line
@@ -103,8 +104,8 @@ set hlsearch
 " 设置 gvim 显示字体
 set guifont=YaHei\ Consolas\ Hybrid
 
-" 禁止折行
-set nowrap
+" 自动换号显示
+set wrap
 
 " 开启语法高亮功能
 syntax enable

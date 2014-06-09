@@ -25,6 +25,9 @@ Plugin 'indexer.tar.gz'                     " tags文件自动更新插件
 Plugin 'DfrankUtil'                         " indexer.tar.gz插件依赖插件
 Plugin 'Vimprj'                             " indexer.tar.gz插件依赖插件
 Plugin 'gtags.vim'                          " global插件
+Plugin 'majutsushi/tagbar'                  " 标签列表插件
+Plugin 'yegappan/grep'                      " 内容查找插件
+Plugin 'Visual-Mark'
 
 " ----------------Vundle end------------------
 " All of your Plugins must be added before the following line
@@ -175,3 +178,85 @@ let g:vim_markdown_initial_foldlevel=1
 " 默认 --fields=+iaS 不满足 YCM 要求，需改为 --fields=+iaSl
 let g:indexer_ctagsCommandLineOptions="--c++-kinds=+p+l+x+c+d+e+f+g+m+n+s+t+u+v --fields=+iaSl --extra=+q"
 
+" +++++YouCompleteMe插件++++
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
+nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+" YCM 补全菜单配色
+" 菜单
+highlight Pmenu ctermfg=2 ctermbg=3 guifg=#005f87 guibg=#EEE8D5
+" 选中项
+highlight PmenuSel ctermfg=2 ctermbg=3 guifg=#AFD700 guibg=#106900
+" 补全功能在注释中同样有效
+let g:ycm_complete_in_comments=1
+" YCM 集成 OmniCppComplete 补全引擎，设置其快捷键
+inoremap <leader>; <C-x><C-o>
+" 补全内容不以分割子窗口形式出现，只显示补全列表
+set completeopt-=preview
+" 从第一个键入字符就开始罗列匹配项
+let g:ycm_min_num_of_chars_for_completion=1
+" 禁止缓存匹配项，每次都重新生成匹配项
+let g:ycm_cache_omnifunc=0
+" 语法关键字补全            
+let g:ycm_seed_identifiers_with_syntax=1
+" 开启 YCM 标签引擎
+let g:ycm_collect_identifiers_from_tags_files=1
+
+" +++++系统自带的man.vim插件++++
+" 启用:Man命令查看各类man信息
+source $VIMRUNTIME/ftplugin/man.vim
+" 定义:Man命令查看各类man信息的快捷键
+nmap <Leader>man :Man 3 <cword><CR>
+
+" +++++gerp插件++++
+" 使用 Grep.vim 插件在工程内全局查找，设置快捷键。快捷键速记法：search in project
+nnoremap <Leader>sp :Grep -ir<CR><CR><CR>
+" 使用 Grep.vim 插件在打开文件内全局查找，设置快捷键。快捷键速记法：search in buffer
+nnoremap <Leader>sb :GrepBuffer -ir<CR><CR>
+
+" +++++gtags插件++++
+
+map <F7>  :exec "!gtags &"<cr>
+
+" +++++tagbar插件++++
+" 设置 tagbar 子窗口的位置出现在主编辑区的右边
+let tagbar_right=1
+" 设置显示／隐藏标签列表子窗口的快捷键。速记：tag list
+nnoremap <Leader>tl :TagbarToggle<CR>
+" 设置标签子窗口的宽度
+let tagbar_width=32
+" tagbar 子窗口中不显示冗余帮助信息
+let g:tagbar_compact=1
+" 设置 ctags 对哪些代码元素生成标签
+let g:tagbar_type_cpp = {
+     \ 'ctagstype' : 'c++',
+     \ 'kinds'     : [
+         \ 'd:macros:1',
+         \ 'g:enums',
+         \ 't:typedefs:0:0',
+         \ 'e:enumerators:0:0',
+         \ 'n:namespaces',
+         \ 'c:classes',
+         \ 's:structs',
+         \ 'u:unions',
+         \ 'f:functions',
+         \ 'm:members:0:0',
+         \ 'v:global:0:0',
+         \ 'x:external:0:0',
+         \ 'l:local:0:0'
+     \ ],
+     \ 'sro'        : '::',
+     \ 'kind2scope' : {
+         \ 'g' : 'enum',
+         \ 'n' : 'namespace',
+         \ 'c' : 'class',
+         \ 's' : 'struct',
+         \ 'u' : 'union'
+     \ },
+     \ 'scope2kind' : {
+         \ 'enum'      : 'g',
+         \ 'namespace' : 'n',
+         \ 'class'     : 'c',
+         \ 'struct'    : 's',
+         \ 'union'     : 'u'
+     \ }
+\ }

@@ -16,6 +16,25 @@
 
 这里使用自动生成ctags文件的indexer.tar.gz插件，要自动生成ctags文件的工程需要在~/.indexer_files文件中进行配置，生成的ctags文件保存在~/.indexer_files_tags目录下，以配置工程名为单位。
 
+# 书签
+
+系统自带功能
+
+* `ma`：创建一个书签，标记为a，为当前文件内书签。如果为大写字母，可以创建全局书签。
+* `\`a`：跳转到书签a所在的位置
+* `:marks`：显示所有书签
+* `:marks a`：显示书签的详细信息
+* `\`.`：跳转到上次修改的位置
+
+# 内容查找grep.vim插件
+
+* `:Grep`：在工程内查找
+* `:Grep -i`：忽略大小写
+* `:Grep -r`：递归搜索子目录
+* `:GrepBffer`：在打开文件内查找
+* `<Leader>sp`：在工程内全局查找
+* `<Leader>sb`：在打开文件内全局查找
+
 # 编译安装vim和vimgdb
 
 首先删除系统自带的vim命令，执行
@@ -102,7 +121,7 @@ vim自带功能，基于语法和缩进进行折叠。
 
 # 工程文件浏览NERDtree
 
-* fl：打开与关闭窗口
+* `<leader>fl`：打开与关闭窗口
 * 回车：打开选中文件；
 * r：刷新工程目录文件列表；
 * I（大写）：显示/隐藏文件；
@@ -131,7 +150,9 @@ cd YouCompleteMe
 git submodule update --init --recursive
 ```
 
-如果没有安装cmake，先安装cmake工具，下载地址：http://www.cmake.org/cmake/resources/software.html。YCM需要CMake2.8版本以上，CentOS通过yum命令安装的CMake命令版本过低，需要通过源码安装。
+如果没有安装cmake，先安装cmake工具，下载地址：http://www.cmake.org/cmake/resources/software.html。
+
+YCM需要CMake2.8版本以上，CentOS通过yum命令安装的CMake命令版本过低，需要通过源码安装。
 
 ```
 cd ~/software/ 
@@ -140,6 +161,9 @@ cd ycm_build
 cmake -G "Unix Makefiles" -DUSE_SYSTEM_LIBclang=ON . ~/.vim/bundle/YouCompleteMe/cpp/
 make ycm_support_libs
 ```
+
+* `<leader>jd`：跳转到定义或声明，仅支持单个文件
+* `<leader>;`：集成OmniCppComplete补全引擎
 
 # vim中编译
 

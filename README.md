@@ -44,7 +44,7 @@ sudo yum remove vim
 rpm -qa | grep vim   // 检查vim是否已经删除
 ```
 
-vim-minimal该软件包不能删除，否则会将sudo命令删除。vim-common软件包作用不是非常清除，不删除。
+vim-minimal该软件包不能删除，否则会将sudo命令删除。vim-common软件包作用不是非常清楚，不删除。
 
 执行：`sudo chown root.root vim74 -R`，将vim74目录属主更改为root用户。
 

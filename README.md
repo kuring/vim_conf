@@ -141,6 +141,29 @@ vim自带功能，基于语法和缩进进行折叠。
 * <leader>ss：保存会话
 * <leader>sr：恢复会话
 
+# vim中编译
+
+* `:make`：可以进行编译。
+
+# quickfix窗口
+
+* `:cope`或`:cw`：可以弹出Quickfix窗口
+* `:ccl`：关闭quickfix窗口
+* `:cn`：go to the next entry
+* `:cp`：go to the previous entry
+* `:ccN`：go to the N’th entry
+* `:cl`：单独一个窗口列出所有标签
+* `:h quickfix`：查看帮助文档
+
+# global的vim插件gtags.vim
+
+在搜索标签时，支持按Tab键智能补全
+
+* `gtags`：在工程目录中执行该命令会生成GTAGS、GRTAGS和GPATH三个文件
+* `:Gtags funcname`：查找函数名
+* `:Gtags -r funcname`：查找函数引用
+* `:Gtags -g string`：查找字符串
+
 # 安装YouCompleteMe
 
 进入到~/.vim/bundle目录中，执行：
@@ -165,28 +188,6 @@ make ycm_support_libs
 * `<leader>jd`：跳转到定义或声明，仅支持单个文件
 * `<leader>;`：集成OmniCppComplete补全引擎
 
-# vim中编译
-
-* `:make`：可以进行编译。
-
-# quickfix窗口
-
-* `:cope`或`:cw`：可以弹出Quickfix窗口
-* `:ccl`：关闭quickfix窗口
-* `:cn`：go to the next entry
-* `:cp`：go to the previous entry
-* `:ccN`：go to the N’th entry
-* `:cl`：单独一个窗口列出所有标签
-* `:h quickfix`：查看帮助文档
-
-# global的vim插件gtags.vim
-
-在搜索标签时，支持按Tab键智能补全
-
-* `gtags`：在工程目录中执行该命令会生成GTAGS、GRTAGS和GPATH三个文件
-* `:Gtags funcname`：查找函数名
-* `:Gtags -r funcname`：查找函数引用
-* `:Gtags -g string`：查找字符串
 
 # 参考文章
 

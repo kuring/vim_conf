@@ -21,10 +21,10 @@
 系统自带功能
 
 * `ma`：创建一个书签，标记为a，为当前文件内书签。如果为大写字母，可以创建全局书签。
-* `\`a`：跳转到书签a所在的位置
+* ``a`：跳转到书签a所在的位置
 * `:marks`：显示所有书签
 * `:marks a`：显示书签的详细信息
-* `\`.`：跳转到上次修改的位置
+* ``.`：跳转到上次修改的位置
 
 # 内容查找grep.vim插件
 
@@ -34,48 +34,6 @@
 * `:GrepBffer`：在打开文件内查找
 * `<Leader>sp`：在工程内全局查找
 * `<Leader>sb`：在打开文件内全局查找
-
-# 编译安装vim和vimgdb
-
-首先删除系统自带的vim命令，执行
-
-```
-sudo yum remove vim
-rpm -qa | grep vim   // 检查vim是否已经删除
-```
-
-vim-minimal该软件包不能删除，否则会将sudo命令删除。vim-common软件包作用不是非常清楚，不删除。
-
-执行：`sudo chown root.root vim74 -R`，将vim74目录属主更改为root用户。
-
-vimgdb的下载地址为：https://github.com/larrupingpig/vimgdb-for-vim7.4
-
-tar jvxf vim-7.4.tar.bz2
-
-patch -p0 < vimgdb-for-vim7.4/vim74.patch
-
-cd vim74
-
-编译vim：
-
-```
-./configure --with-features=huge --enable-rubyinterp --enable-pythoninterp --with-python-config-dir=/usr/lib/python2.6/config/ --enable-perlinterp --enable-gui=gtk2 --enable-cscope --prefix=/usr --enable-luainterp --enable-gdb
-
-make VIMRUNTIMEDIR=/usr/share/vim/vim74 && make install
-```
-
-提示如下错误：
-
-```
-Can't open perl script "/usr/share/perl5/ExtUtils/xsubpp": 没有那个文件或目录
-make[1]: *** [auto/if_perl.c] 错误 2
-make[1]: Leaving directory `/home/kuring/source/vim74/src'
-make: *** [first] 错误 2
-```
-
-执行`yum install perl-ExtUtils-Embed`修复该错误，重新执行上述的configure和make命令，最后执行`make install`。
-
-将vimgdb源码目录中的vimgdb_runtime文件夹复制到~/.vim/bundle目录下，执行`cp vimgdb_runtime/ ~/.vim/bundle/ -r`。
 
 # 代码缩进显示插件vim-indent-guides
 
@@ -164,38 +122,68 @@ vim自带功能，基于语法和缩进进行折叠。
 * `:Gtags -r funcname`：查找函数引用
 * `:Gtags -g string`：查找字符串
 
-# 安装YouCompleteMe
-
-进入到~/.vim/bundle目录中，执行：
-
-```
-cd YouCompleteMe
-git submodule update --init --recursive
-```
-
-如果没有安装cmake，先安装cmake工具，下载地址：http://www.cmake.org/cmake/resources/software.html。
-
-YCM需要CMake2.8版本以上，CentOS通过yum命令安装的CMake命令版本过低，需要通过源码安装。
-
-```
-cd ~/software/ 
-mkdir ycm_build 
-cd ycm_build 
-cmake -G "Unix Makefiles" -DUSE_SYSTEM_LIBclang=ON . ~/.vim/bundle/YouCompleteMe/cpp/
-make ycm_support_libs
-```
+# YouCompleteMe插件
 
 * `<leader>jd`：跳转到定义或声明，仅支持单个文件
 * `<leader>;`：集成OmniCppComplete补全引擎
 
+# 需要安装的软件
+
+## 编译安装vim
+
+首先删除系统自带的vim命令，执行
+
+```
+sudo yum remove vim
+rpm -qa | grep vim   // 检查vim是否已经删除
+```
+
+vim-minimal该软件包不能删除，否则会将sudo命令删除。vim-common软件包作用不是非常清楚，不删除。
+
+执行：`sudo chown root.root vim74 -R`，将vim74目录属主更改为root用户。
+
+```
+tar jvxf vim-7.4.tar.bz2
+cd vim74
+./configure --with-features=huge --enable-rubyinterp --enable-pythoninterp --with-python-config-dir=/usr/lib/python2.6/config/ --enable-perlinterp --enable-gui=gtk2 --enable-cscope --prefix=/usr --enable-luainterp 
+make VIMRUNTIMEDIR=/usr/share/vim/vim74 && make install
+```
+
+提示如下错误：
+
+```
+Can't open perl script "/usr/share/perl5/ExtUtils/xsubpp": 没有那个文件或目录
+make[1]: *** [auto/if_perl.c] 错误 2
+make[1]: Leaving directory `/home/kuring/source/vim74/src'
+make: *** [first] 错误 2
+```
+
+执行`yum install perl-ExtUtils-Embed`修复该错误，重新执行上述的configure和make命令，最后执行`make install`。
+
+安装完成后，执行`vim --version`命令查看当前的vim版本是否正确。
+
+## 编译安装global
+
+编译安装步骤跟普通软件一致。
+
+## 安装YouCompleteMe
+
+如果没有安装cmake，先安装cmake工具，下载地址：http://www.cmake.org/cmake/resources/software.html。YCM需要CMake2.8版本以上，CentOS通过yum命令安装的CMake命令版本过低，需要通过源码安装。
+
+进入到~/.vim/bundle目录中，执行：
+
+```
+cd ~/.vim/bundle/YouCompleteMe
+./install.sh --clang-completer	// 接下来是漫长的等待直到安装完成
+```
 
 # 参考文章
 
-(Vim配置及说明——IDE编程环境)[http://www.cnblogs.com/zhongcq/p/3642794.html]
-(Vim自动补全神器：YouCompleteMe)[http://marchtea.com/?p=161]
-(Git时代的VIM不完全使用教程)[http://beiyuu.com/git-vim-tutorial/]
-(vim源码下载地址)[http://www.vim.org/sources.php]
-(cmake源码下载地址)[http://www.cmake.org/cmake/resources/software.html]
-(vim脚本列表)[http://vim-scripts.org/vim/scripts.html](需翻墙)
-(global插件帮助文档)[https://www.gnu.org/software/global/globaldoc_toc.html]
-(gtags在vim中的应用)[http://blog.csdn.net/cohowang/article/details/5038382]
+* (Vim配置及说明——IDE编程环境)[http://www.cnblogs.com/zhongcq/p/3642794.html]
+* (Vim自动补全神器：YouCompleteMe)[http://marchtea.com/?p=161]
+* (Git时代的VIM不完全使用教程)[http://beiyuu.com/git-vim-tutorial/]
+* (vim源码下载地址)[http://www.vim.org/sources.php]
+* (cmake源码下载地址)[http://www.cmake.org/cmake/resources/software.html]
+* (vim脚本列表)[http://vim-scripts.org/vim/scripts.html](需翻墙)
+* (global插件帮助文档)[https://www.gnu.org/software/global/globaldoc_toc.html]
+* (gtags在vim中的应用)[http://blog.csdn.net/cohowang/article/details/5038382]

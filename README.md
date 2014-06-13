@@ -1,4 +1,4 @@
-很久以前就看过将vim打造称IDE的文章，无奈当时搭建了一半的IDE插件就退出了，编写C/C++程序仍然采用Eclipse CDT开发。
+很久以前就看过将vim打造称IDE的文章，无奈当时搭建了一半的IDE插件就退出了，编写Linux下的C/C++程序仍然采用Eclipse CDT开发，有时也会采用在Windows下进行编译放到Linux下进行编译和调试的方式。抽时间努力学习了vim的使用技巧及各种插件的使用情况，希望我的笔记能够对大家有所帮助。其中vim的插件安装采用的Vundle方式，只要下载完成了.vimrc文件后打开vim执行`:PluginInstall`命令即可自动更新插件了。
 
 #  复制和粘帖
 
@@ -11,7 +11,7 @@
 * `gd`：将函数内变量所有引用高亮显示
 * `gD`：将该文件内的变量全部高亮显示
 * `g]`或`<C-]>`：跳转到函数定义处
-* `gO`或`<C-O>`：返回跳转前的位置
+* `<C-O>`：返回跳转前的位置
 * `<C-T>`：沿着经过的标签列表向回跳转
 
 这里使用自动生成ctags文件的indexer.tar.gz插件，要自动生成ctags文件的工程需要在~/.indexer_files文件中进行配置，生成的ctags文件保存在~/.indexer_files_tags目录下，以配置工程名为单位。
@@ -21,10 +21,10 @@
 系统自带功能
 
 * `ma`：创建一个书签，标记为a，为当前文件内书签。如果为大写字母，可以创建全局书签。
-* ``a`：跳转到书签a所在的位置
+* `\`a`：跳转到书签a所在的位置
 * `:marks`：显示所有书签
 * `:marks a`：显示书签的详细信息
-* ``.`：跳转到上次修改的位置
+* `\`.`：跳转到上次修改的位置
 
 # 内容查找grep.vim插件
 
@@ -49,21 +49,19 @@ vim自带功能，基于语法和缩进进行折叠。
 
 # 头文件和实现文件之间自动切换a.vim
 
-常用快捷键`:A`
-
-:A switches to the header file corresponding to the current file being edited (or vise versa)
-:AS splits and switches
-:AV vertical splits and switches
-:AT new tab and switches
-:AN cycles through matches
-:IH switches to file under cursor
-:IHS splits and switches
-:IHV vertical splits and switches
-:IHT new tab and switches
-:IHN cycles through matches
-<Leader>ih switches to file under cursor
-<Leader>is switches to the alternate file of file under cursor (e.g. on  <foo.h> switches to foo.cpp)
-<Leader>ihn cycles through matches
+* `:A` switches to the header file corresponding to the current file being edited (or vise versa)
+* `:AS` splits and switches
+* `:AV` vertical splits and switches
+* `:AT` new tab and switches
+* `:AN` cycles through matches
+* `:IH` switches to file under cursor
+* `:IHS` splits and switches
+* `:IHV` vertical splits and switches
+* `:IHT` new tab and switches
+* `:IHN` cycles through matches
+* `<Leader>ih` switches to file under cursor
+* `<Leader>is` switches to the alternate file of file under cursor (e.g. on  <foo.h> switches to foo.cpp)
+* `<Leader>ihn` cycles through matches
 
 # 快速开关注释NERD Commenter
 
@@ -117,7 +115,8 @@ vim自带功能，基于语法和缩进进行折叠。
 
 在搜索标签时，支持按Tab键智能补全
 
-* `gtags`：在工程目录中执行该命令会生成GTAGS、GRTAGS和GPATH三个文件
+* `gtags`：在工程目录中执行该命令会生成GTAGS、GRTAGS和GPATH三个文件，也可在vim中执行`:!gtags`来生成。
+* `gtags -u`：更新gtags的相关文件
 * `:Gtags funcname`：查找函数名
 * `:Gtags -r funcname`：查找函数引用
 * `:Gtags -g string`：查找字符串
@@ -179,11 +178,12 @@ cd ~/.vim/bundle/YouCompleteMe
 
 # 参考文章
 
-* (Vim配置及说明——IDE编程环境)[http://www.cnblogs.com/zhongcq/p/3642794.html]
-* (Vim自动补全神器：YouCompleteMe)[http://marchtea.com/?p=161]
-* (Git时代的VIM不完全使用教程)[http://beiyuu.com/git-vim-tutorial/]
-* (vim源码下载地址)[http://www.vim.org/sources.php]
-* (cmake源码下载地址)[http://www.cmake.org/cmake/resources/software.html]
-* (vim脚本列表)[http://vim-scripts.org/vim/scripts.html](需翻墙)
-* (global插件帮助文档)[https://www.gnu.org/software/global/globaldoc_toc.html]
-* (gtags在vim中的应用)[http://blog.csdn.net/cohowang/article/details/5038382]
+* [https://github.com/yangyangwithgnu/use_vim_as_ide](https://github.com/yangyangwithgnu/use_vim_as_ide)（我的主要参考，内容非常详细）
+* [Vim配置及说明——IDE编程环境](http://www.cnblogs.com/zhongcq/p/3642794.html)
+* [Vim自动补全神器：YouCompleteMe](http://marchtea.com/?p=161)
+* [Git时代的VIM不完全使用教程](http://beiyuu.com/git-vim-tutorial/)
+* [vim源码下载地址](http://www.vim.org/sources.php)
+* [cmake源码下载地址](http://www.cmake.org/cmake/resources/software.html)
+* [vim脚本列表](http://vim-scripts.org/vim/scripts.html)(需翻墙)
+* [global插件帮助文档](https://www.gnu.org/software/global/globaldoc_toc.html)
+* [gtags在vim中的应用](http://blog.csdn.net/cohowang/article/details/5038382)

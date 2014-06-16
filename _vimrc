@@ -56,8 +56,6 @@ set tabstop=4
 set shiftwidth=4
 " 让 vim 把连续数量的空格视为一个制表符
 set softtabstop=4
-" 解决粘帖代码时代码换行问题
-set paste
 
 " [代码折叠相关]
 " 基于缩进或语法进行代码折叠
@@ -109,6 +107,11 @@ set guifont=YaHei\ Consolas\ Hybrid
 
 " 自动换号显示
 set wrap
+
+" 换行后智能缩进
+set autoindent
+" 针对C语言特别缩进
+set cindent
 
 " 开启语法高亮功能
 syntax enable

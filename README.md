@@ -202,3 +202,4 @@ cd ~/.vim/bundle/YouCompleteMe
 * [vim脚本列表](http://vim-scripts.org/vim/scripts.html)(需翻墙)
 * [global插件帮助文档](https://www.gnu.org/software/global/globaldoc_toc.html)
 * [gtags在vim中的应用](http://blog.csdn.net/cohowang/article/details/5038382)
+* [Vim插件简单介绍](http://blog.segmentfault.com/xuelang/1190000000630547)

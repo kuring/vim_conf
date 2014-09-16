@@ -1,4 +1,8 @@
-很久以前就看过将vim打造称IDE的文章，无奈当时搭建了一半的IDE插件就退出了，编写Linux下的C/C++程序仍然采用Eclipse CDT开发，有时也会采用在Windows下进行编译放到Linux下进行编译和调试的方式。抽时间努力学习了vim的使用技巧及各种插件的使用情况，希望我的笔记能够对大家有所帮助。其中vim的插件安装采用的Vundle方式，只要下载完成了.vimrc文件后打开vim执行`:PluginInstall`命令即可自动更新插件了。
+很久以前就看过将vim打造称IDE的文章，无奈当时搭建了一半的IDE插件就退出了，编写Linux下的C/C++程序仍然采用Eclipse CDT开发，有时也会采用在Windows下进行编译放到Linux下进行编译和调试的方式。抽时间努力学习了vim的使用技巧及各种插件的使用情况，希望我的笔记能够对大家有所帮助。
+
+其中vim的插件安装采用的Vundle方式，需要先安装Vundle，安装方式为：`git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim`。
+
+安装完Vundle后，vimrc文件后打开vim执行`:PluginInstall`命令即可自动安装插件了。本文中YouCompleteMe插件比较特殊，还需要其他配置方能安装成功。
 
 #  复制和粘帖
 

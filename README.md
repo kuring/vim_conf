@@ -163,20 +163,10 @@ vim-minimal该软件包不能删除，否则会将sudo命令删除。vim-common�
 ```
 tar jvxf vim-7.4.tar.bz2
 cd vim74
-./configure --with-features=huge --enable-rubyinterp --enable-pythoninterp --with-python-config-dir=/usr/lib/python2.6/config/ --enable-perlinterp --enable-gui=gtk2 --enable-cscope --prefix=/usr --enable-luainterp 
+./configure --with-features=huge --enable-rubyinterp --enable-pythoninterp  --enable-perlinterp --enable-gui=gtk2 --enable-cscope --prefix=/usr --enable-luainterp --with-python-config-dir=/usr/lib/python2.6/config/
 make VIMRUNTIMEDIR=/usr/share/vim/vim74 && make install
 ```
-
-提示如下错误：
-
-```
-Can't open perl script "/usr/share/perl5/ExtUtils/xsubpp": 没有那个文件或目录
-make[1]: *** [auto/if_perl.c] 错误 2
-make[1]: Leaving directory `/home/kuring/source/vim74/src'
-make: *** [first] 错误 2
-```
-
-执行`yum install perl-ExtUtils-Embed`修复该错误，重新执行上述的configure和make命令，最后执行`make install`。
+需要注意的是，由于每个机器上python的环境配置一样，需要将python的路径指定正确。
 
 安装完成后，执行`vim --version`命令查看当前的vim版本是否正确。
 

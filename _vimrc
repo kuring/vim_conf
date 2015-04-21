@@ -17,7 +17,6 @@ Plugin 'Mizuchi/STL-Syntax'                 " STL语法高亮插件
 Plugin 'nathanaelkane/vim-indent-guides'    " 代码缩进高亮插件
 Plugin 'a.vim'                              " 在.h文件和.cpp文件进行切换插件
 Plugin 'scrooloose/nerdcommenter'           " 快速注释插件
-Plugin 'Valloric/YouCompleteMe'             " 代码补全插件
 Plugin 'scrooloose/nerdtree'                " 工程文件浏览
 Plugin 'fholgado/minibufexpl.vim'           " 多文档编辑
 Plugin 'plasticboy/vim-markdown'            " markdown插件
@@ -28,6 +27,7 @@ Plugin 'gtags.vim'                          " global插件
 Plugin 'majutsushi/tagbar'                  " 标签列表插件
 Plugin 'yegappan/grep'                      " 内容查找插件
 Plugin 'Visual-Mark'
+Plugin 'Valloric/YouCompleteMe'             " 代码补全插件
 
 " ----------------Vundle end------------------
 " All of your Plugins must be added before the following line
@@ -49,7 +49,7 @@ filetype plugin indent on    " required
 " 自适应不同语言的智能缩进
 filetype indent on
 " 将制表符扩展为空格
-" set expandtab
+set expandtab
 " 设置编辑时制表符占用空格数
 set tabstop=4
 " 设置格式化时制表符占用空格数
@@ -112,6 +112,7 @@ set wrap
 set autoindent
 " 针对C语言特别缩进
 set cindent
+" set smartindent
 
 " 开启语法高亮功能
 syntax enable
@@ -119,6 +120,8 @@ syntax enable
 syntax on
 " 修正插入模式下backspace键不能用问题
 set backspace=2 " make backspace work like most other apps
+
+set paste
 " ----------------插件配置------------------
 " 配色方案
 set background=dark
@@ -183,6 +186,7 @@ let g:indexer_ctagsCommandLineOptions="--c++-kinds=+p+l+x+c+d+e+f+g+m+n+s+t+u+v 
 
 " +++++YouCompleteMe插件++++
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
+" let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 " YCM 补全菜单配色
 " 菜单
@@ -263,3 +267,4 @@ let g:tagbar_type_cpp = {
          \ 'union'     : 'u'
      \ }
 \ }
+set autoindent

@@ -127,7 +127,7 @@ make VIMRUNTIMEDIR=/usr/share/vim/vim74 && make install
 
 ## 安装YouCompleteMe
 
-如果没有安装cmake，先安装cmake工具，下载地址：http://www.cmake.org/cmake/resources/software.html。YCM需要CMake2.8版本以上，CentOS通过yum命令安装的CMake命令版本过低，需要通过源码安装。
+如果没有安装cmake，先安装cmake工具，[下载地址](http://www.cmake.org/cmake/resources/software.html)。YCM需要CMake2.8版本以上，CentOS通过yum命令安装的CMake命令版本过低，需要通过源码安装。
 
 进入到~/.vim/bundle目录中，执行：
 
